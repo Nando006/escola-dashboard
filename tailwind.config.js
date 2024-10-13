@@ -8,7 +8,11 @@ export default {
     './routes/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'afacad': ['Afacad Flux', 'sans-serif'],
+      }
+    },
   },
   plugins: [],
 };
