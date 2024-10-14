@@ -20,5 +20,13 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "main.tsx", "routes", "components"]
+  "include": [
+    "src", 
+    "main.tsx", 
+    "routes", 
+    "components", 
+    "vite-env.d.ts", 
+    "server", 
+    "assets"
+  ]
 }

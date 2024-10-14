@@ -12,7 +12,9 @@ export default function TextField({
   iconSize,
   typeField,
   maskType,
-  max
+  max,
+  disabledField,
+  messageField,
 }: ITextField) {
   const {
     register,
@@ -42,10 +44,10 @@ export default function TextField({
   const error = get(errors, name);
 
   return  (
-    <div className="w-full">
+    <div className="w-full relative">
       <label
         htmlFor={ name }
-        className="flex flex-col w-full px-5 py-2  rounded-xl border border-neutral-700/15 hover:ring hover:ring-slate-700/15 cursor-pointer duration-200"
+        className="flex flex-col w-full px-5 py-2  rounded-lg border border-neutral-700/15 hover:ring hover:ring-slate-700/15 cursor-pointer duration-200"
       >
         <div className="flex flex-row space-x-1.5">
           { icon && (
@@ -69,15 +71,16 @@ export default function TextField({
           value={ value }
           maxLength={ max ? max : 500 }
           onChange={ handleChange }
-          className="outline-none text-base placeholder-neutral-700/70 w-full font-semibold"
+          disabled={ disabledField }
+          className="outline-none text-base placeholder-neutral-700/70 w-full font-semibold p-1 rounded-lg"
         />
       </label>
       { 
-        error?.message && 
+        (error?.message || messageField) && 
         <span 
-          className="font-semibold text-red-500/60 text-xs flex justify-end"
+          className="w-full pr-2 font-semibold text-red-500/80 text-xs flex justify-end absolute"
         >
-          { error?.message?.toString() }
+          { messageField && messageField.length > 0 ? messageField : error?.message?.toString() }
         </span>
       }
     </div>

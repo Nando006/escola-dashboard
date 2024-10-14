@@ -4,7 +4,9 @@ export interface ITextField {
   placeholder?: string;
   icon?: string;
   iconSize?: number;
-  typeField: 'text' | 'email';
+  typeField: 'text' | 'email' | 'password';
   maskType?: 'cpf' | 'cnpj' | 'cep' | 'phone';
   max?: number;
+  disabledField?: boolean;
+  messageField?: string;
 };
