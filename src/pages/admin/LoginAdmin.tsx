@@ -1,6 +1,6 @@
-import LoginForm from "../../../components/form/forms/LoginForm";
+import LoginAdminForm from "../../../components/form/forms/LoginAdminForm";
 
-export default function Login() {
+export default function LoginAdmin() {
   return (
     <div 
       className="absolute w-full h-full flex justify-center items-center"
@@ -9,22 +9,22 @@ export default function Login() {
         <div className="space-y-2">
           <div className="flex justify-end items-center">
             <a
-              href="/admin/loginAdmin"
+              href="/login/auth"
               className="text-xs font-semibold px-4 py-1 bg-slate-500 text-white rounded-lg shadow-md cursor-pointer hover:bg-slate-600 duration-300"
             >
-              Admin - Follow Up
+              Login Escola
             </a>
           </div>
           <div className="w-full text-center">
             <span className="font-bold text-4xl">
-              Bem vindo(a) a Escola
+              Bem vindo(a) ao Admin
             </span>
             <p className="text-neutral-400">
-              Faça login para acessar o sistema da escola
+              Faça login para acessar o sistema do admin
             </p>
           </div>
         </div>
-        <LoginForm />
+        <LoginAdminForm />
       </div>
     </div>
   );

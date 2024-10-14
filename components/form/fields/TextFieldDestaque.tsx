@@ -4,7 +4,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import FormatValue from "../../../src/utils/functions/FormatValue";
 import { get } from 'lodash';
 
-export default function TextField({
+export default function TextFieldDestaque({
   label,
   name,
   placeholder,

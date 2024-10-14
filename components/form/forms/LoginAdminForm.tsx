@@ -1,12 +1,12 @@
-import TextFieldDestaque from "../fields/TextFieldDestaque";
-import Form from "../Form";
-import { loginSchema } from "../../../components/form/schemas/LoginSchema";
-import LoaderLogin from "../../loaders/LoaderLogin";
 import { useRef, useState } from "react";
 import { nhost } from "../../../server/nhost/nhost";
-import { Toast } from 'primereact/toast';
+import { Toast } from "primereact/toast";
+import Form from "../Form";
+import { loginSchema } from "../schemas/LoginSchema";
+import TextFieldDestaque from "../fields/TextFieldDestaque";
+import LoaderLogin from "../../loaders/LoaderLogin";
 
-export default function LoginForm() {
+export default function LoginAdminForm() {
   const [loading, setLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>();
 
@@ -29,7 +29,7 @@ export default function LoginForm() {
         return;
       }
 
-      if(session?.user.defaultRole !== 'escola') {
+      if(session?.user.defaultRole !== 'admin-followup') {
         await nhost.auth.signOut();
         setTimeout(() => {
           incorrectRole();
@@ -39,7 +39,7 @@ export default function LoginForm() {
         return;
       }
 
-      if (session?.user.defaultRole === 'escola') {
+      if (session?.user.defaultRole === 'admin-followup') {
         successLogin();
         return;
       }
@@ -94,12 +94,12 @@ export default function LoginForm() {
 
   return (
     <Form
-      onSubmit={handleChange}
-      schema={loginSchema}
+      onSubmit={ handleChange }
+      schema={ loginSchema }
     >
       <Toast ref={toast} />
       <div className="space-y-5 w-full">
-        <TextFieldDestaque
+        <TextFieldDestaque 
           label="E-mail"
           name="email"
           typeField="text"
@@ -108,7 +108,7 @@ export default function LoginForm() {
           disabledField={ loading }
           messageField={ errorMessage }
         />
-        <TextFieldDestaque 
+        <TextFieldDestaque
           label="Senha"
           name="password"
           typeField="password"
@@ -132,18 +132,6 @@ export default function LoginForm() {
                     <span>Lembrar Acesso</span>
                   </label>
                 </div>
-                <div className="">
-                  <span className="text-blue-500 hover:underline cursor-pointer">
-                    Esqueceu seu e-mail ?
-                  </span>
-                </div>
-              </div>
-              <div className="w-full">
-                <p className="text-xl">
-                  Não tem conta ? <span className="text-blue-500 hover:underline text-base cursor-pointer">
-                    Cadastre sua escola
-                    </span>
-                </p>
               </div>
             </div>
             <div className="w-full flex justify-center">
@@ -161,4 +149,4 @@ export default function LoginForm() {
       </div>
     </Form>
   );
-}
+};
